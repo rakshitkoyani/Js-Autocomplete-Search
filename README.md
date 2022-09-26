@@ -18,4 +18,4 @@ Technology Used:
 - CSS
 - JAVASCRIPT
 
-Live Demo: [Link](https://autocomplete-search.netlify.app/)
+Live Demo: [Link](https://js-autocomplete-search.netlify.app/)
