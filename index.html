@@ -9,59 +9,18 @@
   <title>Autocomplete Search</title>
 </head>
 
-<body class="bg-[#1D1D37] flex text-center mt-[10%]">
-  <div class=" container w-[50%]">
+
+<body class="bg-[#1D1D37] flex mt-[10%] dark">
+  <div class=" container w-[auto] mx-auto">
+    <h3 class="text-white text-3xl mb-4 italic">Autocomplete Search</h3>
     <input type="text"
-      class="p-2 outline-none border-none autocomplete-input bg-light font-bold text-[#48438f] rounded-lg"
+      class="p-2 outline-none border-none autocomplete-input bg-light font-bold text-[#48438f] rounded-lg "
       id="country-input" placeholder="search country here">
-    <ul class="autocomplete-list mt-4 bg-[#ffffff] w-full max-h-[200px] overflow-y-auto" id="country-list">
-      <li>India</li>
+    <ul class="autocomplete-list mt-4 bg-[#ffffff] w-full max-h-[200px] overflow-y-auto " id="country-list">
+      <!-- <li>India</li> -->
     </ul>
   </div>
-  <script>
-    let countries = [];
-    const countryListElem = document.getElementById('country-list'); //it select ul from html
-    const countryInputElem = document.getElementById('country-Input');
-    function fetchCountries() {
-      fetch("https://restcountries.com/v3.1/all")
-        .then((response) => {
-          response.json()
-            .then((data) => {
-              countries = data.map((country) => country.name.common).sort();
-              loadData(countries, countryListElem);
-              // console.log(countries);
-            });
-        }).catch((err) => {
-          console.log(err);
-        });
-    }
-    function loadData(data, element) {
-      if (data) {
-        element.innerHTML = "";
-        let innerElement = "";
-        data.forEach((item) => {
-          innerElement += `
-<li class="p-[5px] text-[#48438f] font-medium w-full cursor-pointer">${item}</li>
-          `;
-        });
-        element.innerHTML = innerElement; //it will add li to ul 
-      }
-    }
-    function filterData(data, searchText) {
-      return data.filter((x) =>
-        x.toLowerCase().includes(searchText.toLowerCase())
-      )
-    }
-    fetchCountries();
-
-    countryInputElem.addEventListener("input", function () {
-      const filterCon = filterData(countries, countryInputElem.value);
-      if (countryListElem) {
-        loadData(filterCon, countryListElem);
-
-      }
-    });
-  </script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
